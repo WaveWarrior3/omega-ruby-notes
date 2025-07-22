@@ -240,7 +240,7 @@ Heal to full.
 
 After exiting the gym, head north to Granite Cave.
 :::if{source="Mudkip" condition=$rtskip}
-- Equip Silk Scraf
+- Equip Silk Scarf
 :::
 :::if{source="Mudkip" condition="speed=(20+ / 0-12 / 0-5) || atk=(x/0-12/x)"}
 - Potion
@@ -250,8 +250,8 @@ After exiting the gym, head north to Granite Cave.
 :::
 - Super Repel.
 
-:::if{source="Mudkip" condition="speed=(x/12+/x)"}
- ::variable{name="ppskip" type="boolean" title="-Can Skip PP UP" defaultValue=0}
+:::if{source="Mudkip" condition="speed=(x/12+/x) && spatk=(x/14+/3+)"}
+ ::variable{name="ppskip" type="boolean" title="Can Skip PP UP" defaultValue=0}
 :::
 
 Get Soft Sand
@@ -449,7 +449,7 @@ Puzzle (room 2): Top-right blue switch, red switch, top-right blue switch.
 
 Exit the gym and head north. At the rocks:
 - Use a Super Repel (keep applied until they run out).
-- Teach Rock Smash over Echoved Voice (slot 4).
+- Teach Rock Smash over Echoed Voice (slot 4).
 
 
 :info[**Free heal**]{color=pink}
@@ -1151,7 +1151,7 @@ Catch Groudon with the Master Ball.
   :::::pokemon[Altaria]
     - Swords Dance
     - Smack Down
-    - Earthquake (x2) (Smack Down)
+    - Earthquake
 
     ::damage[Dragon Pulse]{source="Groudon" special=true movePower=85 stab=true level=46 opponentLevel=46 evs=4 opponentStat=69 offensive=false effectiveness=1 theme=error}
   :::::
@@ -1189,9 +1189,9 @@ Catch Groudon with the Master Ball.
       - Earthquake
     :::
     :::if{source="Groudon" condition="speed=(#/8-/x)"}
-      - Swords Dance x2
       - X Speed x2
-      - Full Heal
+      - (Swords Dance if not +3)
+      - (Full Heal if confused)
       - Earthquake
     :::
   :::::
@@ -1202,8 +1202,7 @@ Catch Groudon with the Master Ball.
    ::: 
     :::if{source="Groudon" condition="atk=~(x/15+/#)"}
     - If +5 Attack, Earthquake
-    - If Sun
-      - Overheat
+    - If Sun, Overheat
     - Otherwise
     
     ![shftrychart](shiftrychart.png)  
@@ -1217,15 +1216,15 @@ Catch Groudon with the Master Ball.
     ::damage[Shiftry's Leaf Blade ]{source="Groudon" special=false movePower=90 stab=true level=48 opponentLevel=50 evs=0 opponentStat=109 offensive=false effectiveness=2 theme=error}
   :::::
   :::::pokemon[Cacturne]
-    - Earthquake
+    - Earthquake (Overheat if Spiky Shield)
   :::::
   :::::pokemon[Sharpedo]{info="Aqua Jet does 60 max" infoColor=blue}
     - Heal if Aqua Jet range
-    - Earthquake
+    - Smack Down
      ::damage[Sharpedo's Aqua Jet]{source="Groudon" special=false movePower=40 stab=true level=48 opponentLevel=50 evs=1 opponentStat=141 offensive=false effectiveness=2 theme=error}
   :::::
   :::::pokemon[Absol]
-    - Earthquake
+    - Earthquake (Smack Down at +5)
   :::::
 :::::::
 
@@ -1272,12 +1271,7 @@ Open your item menu:
     - Earthquake
     ::damage[+2 Earthquake vs Dusknoir]{source="Groudon" evolution=1 evs=16 special=false movePower=100 stab=true level=49 opponentLevel=53 opponentStat=167 offensive=true healthThreshold=114 effectiveness=1 combatStages=2 theme=error}
   :::::
-:::::::
-
-- Bag
-  - Heal to full
-  - Equip Red Orb if dont have it on
-  
+:::::::  
 
 
 :::::::trainer[Glacia]
@@ -1286,11 +1280,11 @@ Open your item menu:
     - X Speed
     :::
 
-    - Swords Dance
-    - Earthquake
+    - Swords Dance (x2)
+    - Smack Down
   :::::
   :::::pokemon[Walrein]
-    - Earthquake (x2)
+    - EQ if +2, Smack Down if +4
       ::damage[+2 Earthquake vs Walrein]{source="Groudon" evolution=1 evs=16 special=false movePower=100 stab=true level=50 opponentLevel=54 opponentStat=106 offensive=true healthThreshold=187 effectiveness=1 combatStages=2 theme=error}
   :::::
   :::::pokemon[Froslass]
@@ -1300,7 +1294,7 @@ Open your item menu:
     - Smack Down
   :::::
   :::::pokemon[Glalie]
-    - Earthquake (+ Smack Down if Protect)
+    - Smack Down (EQ if any left)
   :::::
 :::::::
 
@@ -1316,7 +1310,7 @@ Open your item menu:
     - X Speed
     - Swords Dance x2
     - If Cotton Guard used twice already
-      - Swords Dance 
+      - Swords Dance a third time
     - Smack Down (+ Earthquake)
     :::
     :::if{source="Groudon" condition="speed=(16-/x/x) && atk=(#/11-/x)"}
@@ -1325,13 +1319,15 @@ Open your item menu:
     - Smack Down (+ Earthquake)
     :::
     :::if{source="Groudon" condition="speed=(17+/#/23-) && atk=(#/11-/x)"}
-    - 1 Cotton Guard used = X-Speed!
     - Swords Dance x3
+    - If Cotton Guard, X-Speed
     - Smack Down (+ Earthquake)
     :::
     :::if{source="Groudon" condition="speed=(17+/#/23-) && atk=~(#/11-/x)"}
-    - 2 Cotton Guards used = X-Speed + Swords Dance again!
-    - Swords Dance x2 (x3)
+    - Swords Dance _x2
+    - If 2 Cotton Guards:
+      - Swords Dance a third time
+      - X-Speed
     - Smack Down (+Earthquake)
     :::
     :::if{source="Groudon" condition="speed=(x/x/24+) && atk=(#/11-/x)"}
@@ -1342,9 +1338,8 @@ Open your item menu:
     :::if{source="Groudon" condition="speed=(x/x/24+) && atk=~(#/11-/x)"}
     - Swords Dance x2
     - 2 Cotton Guards used
-      - Swords Dance again
+      - Swords Dance a third time
     - Smack Down (+Earthquake)
-    - Skip X-Speed on Flygon
     :::
      ::damage[Altaria's Dragon Pulse]{source="Groudon" special=true offensive=false evs=8 movePower=85 level=51 opponentLevel=53 stab=true opponentStat=83}
   :::::
@@ -1365,8 +1360,7 @@ Open your item menu:
 :::::::
 
 - Bag:
-  - Heal to full 
-  - Equip Silk Scarf if needed
+  - Heal to full
 
 :::::::trainer[Champion Steven]
   :::::pokemon[Skarmory]{info="Heal as needed but can toxic again"}
