@@ -809,9 +809,7 @@ Heal to full.
   ::::
   ::::pokemon[Wailmer]
     - If +1: Luster Purge
-    - Dragon Breath
-    - If still green HP: Luster Purge
-    - Otherwise: Dragon Breath again
+    - Otherwise: Dragon Breath + Dragon Breath/Luster Purge
   ::::
 :::::
 
