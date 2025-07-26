@@ -250,7 +250,7 @@ After exiting the gym, head north to Granite Cave.
 :::
 - Super Repel.
 
-:::if{source="Mudkip" condition="speed=(x/12+/x) && spatk=(x/14+/3+)"}
+:::if{source="Mudkip" condition="speed=(x/12+/x)"}
  ::variable{name="ppskip" type="boolean" title="Can Skip PP UP" defaultValue=0}
 :::
 
